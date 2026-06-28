@@ -46,10 +46,21 @@ const { title } = Astro.props;
 		padding: 2em;
 	}
 
+	:global(.small-code) {
+		font-family: monospace;
+		display: inline-block;
+		color: var(--color-foreground-small-code, maroon);
+	}
+
 	:global(.semicentered) {
 		box-sizing: border-box;
 		width: min(100%, 120em);
 		margin: auto;
+	}
+
+	:global(.section) {
+		margin: 1em auto;
+		padding: 0 2em;
 	}
 
 	:global(.nav-button) {
@@ -65,6 +76,7 @@ const { title } = Astro.props;
 		padding: calc(.75em + 1px) calc(1em - 1px) calc(.75em - 1px) calc(1em + 1px);
 		opacity: 90%;
 	}
+	
 	:global(.ac-1) {
 		background-color: var(--color-accent-1);
 	}
@@ -76,6 +88,10 @@ const { title } = Astro.props;
 	}
 	:global(.ac-4) {
 		background-color: var(--color-accent-4);
+	}
+
+	:global(:focus-visible) {
+		outline: medium solid var(--color-foreground-primary);
 	}
 
 	@media (prefers-color-scheme: light) {

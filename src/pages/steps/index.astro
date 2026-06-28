@@ -4,16 +4,20 @@ import StepList from '../../components/StepList.astro';
 ---
 
 <Layout title={"Build a browser!"}>
-	<div class="semicentered nav">
-		<h1>Steps</h1>
-		<p id="steps-desc">
-			If rebuilding from scratch, follow each step in order.
-			If you want to check out a specific step, check out the step's associated commit (each step indicates its hash)
-			then run `git checkout HEAD^` before following the step (except for the initial commit).
-		</p>
-		<a href="/"><button class="nav-button ac-1">Back to Main Page</button></a>
-	</div>
-	<StepList/>
+	<section class="semicentered nav">
+		<div class="section">
+			<h1>Steps</h1>
+			<p id="steps-desc">
+				If rebuilding from scratch, follow each step in order.
+				If you want to check out a specific step, check out the step's associated commit (each step indicates its hash)
+				then run <span class="small-code">git checkout HEAD^</span> before following the step (except for the initial commit).
+			</p>
+			<a href="/"><button class="nav-button ac-1">Back to Main Page</button></a>
+		</div>
+		<div class="section">
+			<StepList/>
+		</div>
+	</section>
 </Layout>
 
 <style>

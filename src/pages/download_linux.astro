@@ -1,0 +1,60 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<!-- TODO: HTTP-equiv for download -->
+<Layout title={"Thank You for Downloading! (Linux)"}>
+	<div class="semicentered section">
+		<h2>Thank You for Downloading!</h2>
+		<p>
+			Your download should begin shortly. If it does not, click <a href="#">here</a>.
+		</p>
+	</div>
+	<div id="command" class="semicentered section">
+		<p>
+			You need a Java 24+ JRE (or JDK) to run BuildABrowser. <a href="https://www.azul.com/downloads/?package=jdk#zulu">Download Azul Zulu OpenJDK</a> or run
+			<span class="small-code">sdk install java 25.0.3-zulu</span> via <a href="https://sdkman.io/">sdkman</a>. Ensure your <span class="small-code">PATH</span>
+			and <span class="small-code">JAVA_HOME</span> environment variables are set.
+		</p>
+		<h4>Java 24:</h4>
+		<code>
+			java -Xms32m
+				-XX:MaxHeapFreeRatio=10 -XX:MinHeapFreeRatio=10
+				-XX:G1PeriodicGCInterval=1000 -XX:+G1PeriodicGCInvokesConcurrent
+				-XX:+UnlockExperimentalVMOptions -XX:+UseCompactObjectHeaders
+				-XX:CICompilerCount=2 -Djava.net.preferIPv4Stack=true
+				-jar buildabrowser.jar
+		</code>
+		<h4>Java 25 (LTS):</h4>
+		<code>
+			java -Xms32m
+				-XX:MaxHeapFreeRatio=10 -XX:MinHeapFreeRatio=10
+				-XX:G1PeriodicGCInterval=1000 -XX:+G1PeriodicGCInvokesConcurrent
+				-XX:CICompilerCount=2 -Djava.net.preferIPv4Stack=true
+				-jar buildabrowser.jar
+		</code>
+		<p>
+			By default, BuildABrowser uses Skija (GPU-accelerated) for drawing. You can use Java2D by adding the <span class="small-code">--use-java2d</span> flag,
+			or use Skija in software-rendering mode via the <span class="small-code">--use-software-rendering</span> flag.
+		</p>
+	</div>
+	<div class="semicentered section">
+		<a href="/"><button class="nav-button ac-1">Back to Main Page</button></a>
+	</div>
+</Layout>
+
+<style>
+	a {
+		color: gray;
+	}
+
+	#command p {
+		max-width: 55em;
+	}
+	#command code {
+		white-space: nowrap;
+		max-width: 100%;
+		overflow: auto;
+		display: block;
+	}
+</style>

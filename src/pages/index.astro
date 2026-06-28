@@ -17,40 +17,28 @@ import Layout from '../layouts/Layout.astro';
 			<a href="https://youtube.com/">View on <span style="color: #ff0033;">YouTube</span></a>
 		</span>
 	</div>
-	<div class="semicentered section">
+	<section class="semicentered section">
 		<h2>Download a build:</h2>
-	</div>
-	<div id="downloads" class="semicentered">
-		<a href="about:blank"><button class="nav-button ac-4">Linux (Tested on Arch, btw)</button></a>
-		<a href="about:blank"><button class="nav-button ac-1">Windows (Tested on Windows 11)</button></a>
-		<a href="about:blank"><button class="nav-button ac-2">MacOS (Not Tested)</button></a>
-	</div>
-	<div id="command" class="semicentered section">
-		<h4>Java 24:</h4>
-		<code>
-			java -Xms32m
-				-XX:MaxHeapFreeRatio=10 -XX:MinHeapFreeRatio=10
-				-XX:+UnlockExperimentalVMOptions -XX:+UseCompactObjectHeaders
-				-Djava.net.preferIPv4Stack=true -jar buildabrowser.jar
-		</code>
-		<h4>Java 25 (LTS):</h4>
-		<code>
-			java -Xms32m
-				-XX:MaxHeapFreeRatio=10 -XX:MinHeapFreeRatio=10
-				-Djava.net.preferIPv4Stack=true -jar buildabrowser.jar
-		</code>
-		<p>
-			By default, BuildABrowser uses Skija for drawing. You can use Java2D by adding the <span class="small-code">--use-java2d</span>.
-		</p>
-	</div>
-	<div class="semicentered section">
+		<div id="downloads">
+			<a href="download_linux" tabindex="-1"><button class="nav-button ac-2">Linux (Tested on Arch, btw)</button></a>
+			<a href="download_windows" tabindex="-1"><button class="nav-button ac-1">Windows (Tested on Windows 11)</button></a>
+			<a href="download_android_desktop" tabindex="-1"><button class="nav-button ac-4">Android Desktop (Experimental)</button></a>
+		</div>
+		<div id="infoblurb">
+			<p>
+				The Linux/Window builds require a JVM (Java 24 or higher) - I will publish an experimental
+				Graal build later, but Graal didn't work very well in my testing.
+				For systems not listed, it may be possible (untested) to download the Linux build and pass the
+				<span class="small-code">--use-java2d</span> flag.
+			</p>
+		</div>
+	</section>
+	<section class="semicentered section">
 		<h2>Take a look at some steps:</h2>
-	</div>
-	<StepList max={6}/>
-	<div class="semicentered section">
-		<a href="/steps"><button class="nav-button ac-1 all-steps">All Steps</button></a>
-	</div>
-	<div id="demo" class="section">
+		<StepList max={6}/>
+		<a href="/steps" tabindex="-1"><button class="nav-button ac-1 all-steps">All Steps</button></a>
+	</section>
+	<section id="demo" class="section">
 		<h2>See a demo!</h2>
 		<a href={DemoScreenshot.src}>
 			<Image
@@ -60,8 +48,8 @@ import Layout from '../layouts/Layout.astro';
 				id="demo-screenshot"
 			/>
 		</a>
-	</div>
-	<footer class="section">
+	</section>
+	<footer>
 		Created by Jason Gronn (@EveryOS) | <a href="mailto:jgronn@buildabrowser.net">mailto:jgronn@buildabrowser.net</a><br/>
 		Socials
 		| <a href="https://github.com/JasonTheKitten/">GitHub</a>
@@ -85,37 +73,27 @@ import Layout from '../layouts/Layout.astro';
 	.intro-card h1 {
 		font-size: xxx-large;
 	}
-
-	.section {
-		margin: 1em auto;
-		padding: 0 2em;
-	}
 	.all-steps {
 		width: min(80vw, 20em);
-	}
-
-	.small-code {
-		font-family: monospace;
-		display: inline-block;
-		color: var(--color-foreground-small-code, maroon);
+		margin-top: 2em;
 	}
 
 	#demo-links {
 		display: block;
 		margin: .5em;
 	}
-	#demo-links a {
+	a {
 		color: gray;
 	}
 
 	#downloads {
 		display: flex;
 		flex-wrap: wrap;
-		padding: 0 2em;
 		column-gap: 2em;
 	}
 	#downloads > * {
 		flex-grow: 1;
+		flex-basis: 25%
 	}
 	#downloads > a {
 		flex-grow: 1;
@@ -127,14 +105,8 @@ import Layout from '../layouts/Layout.astro';
 		width: 100%;
 	}
 
-	#command p {
+	#infoblurb p {
 		max-width: 55em;
-	}
-	#command code {
-		white-space: nowrap;
-		max-width: 100%;
-		overflow: auto;
-		display: block;
 	}
 
 	#demo {
@@ -150,21 +122,55 @@ import Layout from '../layouts/Layout.astro';
 
 	footer {
 		position: sticky;
-		bottom: 1em;
-		left: 0
+		bottom: 0;
+		padding: 1em;
+		margin-top: -1em;
+		left: 0;
+		width: fit-content;
 	}
 
 	footer a {
 		color: white;
 	}
 
-	@media screen and (max-width: 500px) {	
+	@media screen and (max-width: 800px) {
 		.intro-card h1 {
 			font-size: xx-large;
 		}
 
 		footer {
 			position: static;
+		}
+
+		#downloads > * {
+			flex-basis: 100%;
+		}
+		
+		.all-steps {
+			box-sizing: border-box;
+			width: 100%;
+			margin-top: 0;
+		}
+	}
+
+	@media screen and (prefers-color-scheme: light) {
+		body {
+			--color-foreground-primary: black;
+			--color-background-primary: #FEE;
+			--color-background-secondary: #DCCE;
+			--color-foreground-small-code: maroon;
+		}
+	}
+
+	@media screen and (max-width: 2700px) {
+		footer {
+			background-color: #0008;
+		}
+
+		@media (prefers-color-scheme: light) {
+			footer {
+				background-color: #FFF4;
+			}
 		}
 	}
 </style>

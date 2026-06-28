@@ -17,7 +17,7 @@ const { Content } = await render(post);
 	<div class="pre-controls">
 		<a href="/"><button class="nav-button ac-1">Back to Main Page</button></a>
 	</div>
-	<div class="content">
+	<section class="content">
 		<h1>{post.data.title}</h1>
 		<a
 			href={`https://github.com/build-a-browser/BABWebsite/blob/main/src/content/steps/${post.id}.md`}
@@ -26,27 +26,27 @@ const { Content } = await render(post);
 			href={`https://github.com/build-a-browser/build-a-browser-predraft/commit/${post.data.hashes.predraft}`}
 		>Predraft Commit</a> <span class="predraft-hash">({post.data.hashes.predraft})</span><br/></>}
 		<Content />
-	</div>
-	<div class="content">
+	</section>
+	<section class="content">
 		<h3>Example Pages (for testing)</h3>
 		{ post.data.examples ? <ul>{ post.data.examples.map(i => <li>
 			{i} (<a href={`/examples/${i}`} target="_blank">View</a> | <a href={`/examples/${i}`} download>Download</a>)
 		</li>) }</ul> : <p>No related example pages listed</p> }
-	</div>
-	<div class="content">
+	</section>
+	<section class="content">
 		<h3>WPT Pages</h3>
 		{ post.data["wpt-pages"] ? <ul>{ post.data["wpt-pages"].map(i => <li>
 			<a href={i} target="_blank">{i}</a>
 		</li>) }</ul> : <p>No related WPT pages listed</p> }
-	</div>
-	<div class="content">
+	</section>
+	<section class="content">
 		<h3>Related Specifications</h3>
 		{ post.data.specs ? <ul>{ post.data.specs.map(i => <li>
 			<a href={i} target="_blank">{i}</a>
 		</li>) }</ul> : <p>No related specifications listed</p> }
-	</div>
+	</section>
 	<div class="post-controls">
-		{ post.data['next-step'] && <a href={post.data['next-step'] + ".md"}>
+		{ post.data['next-step'] && <a href={"/steps/" + post.data['next-step']}>
 			<button class="nav-button ac-4">Next Step</button>
 		</a> }
 	</div>

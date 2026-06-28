@@ -1,0 +1,51 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<!-- TODO: HTTP-equiv for download -->
+<Layout title={"Thank You for Downloading! (Android Desktop)"}>
+	<div class="semicentered section">
+		<h2>Thank You for Downloading!</h2>
+		<p>
+			Your download should begin shortly. If it does not, click <a href="#">here</a>.
+		</p>
+	</div>
+	<div id="command" class="semicentered section">
+		<p>
+			You will need to install the APK file on your Android Desktop device.
+		</p>
+		<p class="mobile-warning">
+			<i>This application is not intended for the mobile version of Android.</i>
+		</p>
+		<p>
+			Although the browser in general is experimental, this Android Desktop build is extra-experimental.
+			Things probably will not work as expected.
+		</p>
+		<p>
+			Unfortunately, Android Desktop enforces a heap size limit that only applies to Java applications,
+			so please keep in mind that large pages that would load in non-Java browsers may not load here.
+		</p>
+	</div>
+	<div class="semicentered section">
+		<a href="/"><button class="nav-button ac-1">Back to Main Page</button></a>
+	</div>
+</Layout>
+
+<style>
+	a {
+		color: gray;
+	}
+	.mobile-warning {
+		color: pink;
+	}
+
+	#command p {
+		max-width: 55em;
+	}
+	#command code {
+		white-space: nowrap;
+		max-width: 100%;
+		overflow: auto;
+		display: block;
+	}
+</style>

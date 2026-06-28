@@ -31,7 +31,7 @@ const colors = [
 		justify-content: space-between;
 
 		list-style-type: none;
-		padding: 0 2em;
+		padding: 0 0;
 	}
 	.step-list li {
 		flex-basis: max(20em, calc(33% - 2em));
@@ -64,5 +64,12 @@ const colors = [
 	.step-status {
 		padding-left: .2em;
 		font-size: .8em;
+	}
+
+	@media screen and (max-width: 800px) {
+		.step-list li {
+			flex-basis: 100%;
+			max-width: 100%;
+		}
 	}
 </style>
