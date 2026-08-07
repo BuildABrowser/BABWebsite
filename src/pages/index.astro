@@ -14,7 +14,7 @@ import Layout from '../layouts/Layout.astro';
 		</p>
 		<span id="demo-links">
 			<a href="#demo">Jump to Screenshots</a> |
-			<a href="https://youtube.com/">View on <span style="color: #ff0033;">YouTube</span></a>
+			<a href="https://youtube.com/" target="_blank">View on <span style="color: #ff0033;">YouTube</span></a>
 		</span>
 	</div>
 	<section class="semicentered section">
@@ -52,11 +52,11 @@ import Layout from '../layouts/Layout.astro';
 	<footer>
 		Created by Jason Gronn (@EveryOS) | <a href="mailto:jgronn@buildabrowser.net">mailto:jgronn@buildabrowser.net</a><br/>
 		Socials
-		| <a href="https://github.com/JasonTheKitten/">GitHub</a>
-		| <a href="https://www.linkedin.com/in/jason-gronn/">LinkedIn</a>
-		| <a href="https://www.deviantart.com/everyos">DeviantArt</a>
-		| <a href="https://news.ycombinator.com/user?id=everyos_">Hacker News</a>
-		| <a href="https://old.reddit.com/user/everyos/" style="font-size: .75em;">Reddit</a>
+		| <a href="https://github.com/JasonTheKitten/" target="_blank">GitHub</a>
+		| <a href="https://www.linkedin.com/in/jason-gronn/" target="_blank">LinkedIn</a>
+		| <a href="https://www.deviantart.com/everyos" target="_blank">DeviantArt</a>
+		| <a href="https://news.ycombinator.com/user?id=everyos_" target="_blank">Hacker News</a>
+		| <a href="https://old.reddit.com/user/everyos/" target="_blank" style="font-size: .75em;">Reddit</a>
 		| Discord: everyos
 	</footer>
 </Layout>
@@ -81,9 +81,6 @@ import Layout from '../layouts/Layout.astro';
 	#demo-links {
 		display: block;
 		margin: .5em;
-	}
-	a {
-		color: gray;
 	}
 
 	#downloads {
@@ -130,7 +127,7 @@ import Layout from '../layouts/Layout.astro';
 	}
 
 	footer a {
-		color: white;
+		color: var(--color-foreground-primary);
 	}
 
 	@media screen and (max-width: 800px) {
@@ -150,15 +147,6 @@ import Layout from '../layouts/Layout.astro';
 			box-sizing: border-box;
 			width: 100%;
 			margin-top: 0;
-		}
-	}
-
-	@media screen and (prefers-color-scheme: light) {
-		body {
-			--color-foreground-primary: black;
-			--color-background-primary: #FEE;
-			--color-background-secondary: #DCCE;
-			--color-foreground-small-code: maroon;
 		}
 	}
 

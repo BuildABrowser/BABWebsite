@@ -30,11 +30,31 @@ const { title } = Astro.props;
 		--color-background-primary: #0A0A0A;
 		--color-background-secondary: #222E;
 		--color-foreground-small-code: aquamarine;
+		--color-hyperlink: #999;
 
-		--color-accent-1: #C44A3ABB;
-		--color-accent-2: #D97A2BBB;
-		--color-accent-3: #F2D479BB;
-		--color-accent-4: #6FAF4FBB;
+		--color-accent-1: #005d72;
+		--color-accent-2: #2E4057;
+		--color-accent-3: #005d72;
+		--color-accent-4: #2E4057;
+	}
+
+	@media (prefers-color-scheme: light) {
+		body {
+			--color-foreground-primary: #000;
+			--color-background-primary: #F8F8FF;
+			--color-background-secondary: #E6E0F6EE;
+			--color-foreground-small-code: maroon;
+			--color-hyperlink: #666;
+
+			--color-accent-1: #cdb4db;
+			--color-accent-2: #ffc8dd;
+			--color-accent-3: #ffafcc;
+			--color-accent-4: #bde0fe;
+		}
+	}
+	
+	:global(a) {
+		color: var(--color-hyperlink);
 	}
 
 	:global(a) {
@@ -70,7 +90,7 @@ const { title } = Astro.props;
 		padding: .75em 1em;
 		margin: 1em;
 		margin-left: 0;
-		color: white;
+		color: var(--color-foreground-primary);
 	}
 	:global(.nav-button:hover) {
 		padding: calc(.75em + 1px) calc(1em - 1px) calc(.75em - 1px) calc(1em + 1px);
@@ -92,14 +112,5 @@ const { title } = Astro.props;
 
 	:global(:focus-visible) {
 		outline: medium solid var(--color-foreground-primary);
-	}
-
-	@media (prefers-color-scheme: light) {
-		body {
-			--color-foreground-primary: black;
-			--color-background-primary: #FEE;
-			--color-background-secondary: #DCCE;
-			--color-foreground-small-code: maroon;
-		}
 	}
 </style>

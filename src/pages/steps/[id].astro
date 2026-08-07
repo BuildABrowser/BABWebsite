@@ -73,13 +73,10 @@ const { Content } = await render(post);
 		margin: 1em auto;
 		border: 1px solid var(--color-outlines, gray);
 	}
-	/* Unfortunately needs to be global to affect the markdown renderer */
-	.content :global(a) {
-		color: gray;
-	}
+	
 	.commit-hash {
 		font-size: .8em;
-		color: gray;
+		color: var(--muted-link-color);
 	}
 
 	@media screen and (max-width: 86em) {

@@ -3,7 +3,7 @@ title: 'Step 1: Initial Commit'
 description: 'Learn more about BuildABrowser. Initialize your repository.'
 next-step: 'step_2'
 hashes:
-  release: '0a04a7803e884913384ca8c20c96690203a2b20b'
+  release: '46fca1a1f17d191dddcb5ce9c9c351270636d5fd'
 ---
 
 ## Prelude
@@ -26,7 +26,9 @@ be easy to get mixed up. As such, here is a quick briefing on some browser termi
 * **The Browser Chrome (uppercase C)** - Refers to the web browser named Google Chrome. To distinguish between it and browser chrome, pay attention to surrounding context.
 
 To better illustrate the difference between these, a graphic is provided below:
+
 [TODO: Insert Graphic]
+
 Alt: A picture illustrating the difference between various browser related terms.
 
 The rendering engine refers to the technologies that then retrieves and parses the HTML and CSS, as well as lays out
@@ -103,14 +105,14 @@ Make sure you have these technologies installed:
 * Gradle 9
 * JDK 24 or 25
 * A Java profiler, like VisualVM or JProfiler
-* git
+* Git
 
 [TODO: Include website links and sdkman commands]
 
 **Want to skip this step**? Clone the commit hash at the top of the page
 ```bash
 git clone https://github.com/BuildABrowser/BuildABrowser
-git checkout 0a04a7803e884913384ca8c20c96690203a2b20b
+git checkout 46fca1a1f17d191dddcb5ce9c9c351270636d5fd
 ```
 
 ## Gradle Setup

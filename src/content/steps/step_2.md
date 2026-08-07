@@ -1,25 +1,31 @@
 ---
 title: 'Step 2: Show a Window'
 description: 'Open a window with text loaded from a file or server, using a URL passed via the command-line.'
-status: 'Draft'
 next-step: 'step_3'
 hashes:
-  predraft: '4e4689fb4a7be85b778bfc15f3cd8b43483e5481'
+  release: '2637d00999396af0d7f8b2ad340bc66441d6dda1'
 examples:
   - 'just_text.html'
 ---
 
 One question you might have when looking into browser development is "where do I even start?".
 
-I think a good place to start might be with one of the simplest units of work possible: Showing a window.
-By starting with this, you can immediately start to get visual feedback, and visual feedback is the most motivating form of feedback.
+Showing a window. We'll start there.
 
-So make a Main class, and inside the main method, you can just put
+Once you have a window, you have visual feedback. Visual feedback is motivating.
+
+In the `main` method of the `Main` class, add this:
 
 ```java
+JFrame.setDefaultLookAndFeelDecorated(true);
 JFrame frame = new JFrame("BuildABrowser Test Program");
+frame.setSize(new Dimension(800, 500));
+frame.setUndecorated(true);
+// ...
 frame.setVisible(true);
 ```
+
+If your system provides its own window decorations, you can remove the related lines from the above snippet.
 
 Although Swing is not a good GUI library, it is bundled with Java and probably the simplest option to get started with right now.
 
@@ -28,7 +34,7 @@ directly for the renderer (and, even later, we'll get fancy with Skija, a Skia w
 
 Let's quickly improve a few things.
 
-You can optionally put these lines at the top of your main method:
+You can optionally put these lines at the top of your main method, so that the UI will adapt to your system:
 
 ```java
 try {
@@ -38,22 +44,22 @@ try {
 }
 ```
 
-While it has no effect on my current system, on Windows it gives you a nice retro UI.
-
-If your windowing system doesn't draw it's own decorations, you can also add `frame.setUndecorated(true);` after the window creation to use
-Swing's client-side window decorations.
-
 Now, a window by itself is, of course, not *that* interesting, and it would make for a very anticlimatic step if that's all you did.
-So, we'll do the most basic flow to make it a bit more browser-like.
+
+Let's make it a bit more browser-like.
 
 At it's most basic level, you might say a browser has a flow somewhat like this:
 
 [TODO: Draw Diagram]
 
 Find out what page the user wishes to go to
+
 vvv
+
 Fetch the contents of that page
+
 vvv
+
 Render that page
 
 (thanks for reading my award-winning series "How to Write a Browser in 3 Steps")
@@ -63,19 +69,21 @@ So let's do that!
 First, we "find out what page the user wishes to go to"
 
 ```java
-URL url = new URI(args[0]).toURL();
+URI url = new URI(args[0]);
 ```
 
 You can pass the URL using Gradle's --args flag (the exact path format varies per system).
 
 ```java
-./gradlew run --args="file:///home/me/my_web_page.html"
+./gradlew run --args="file:///home/me/bab/just_text.html"
 ```
+
+(You can download just_text.html using the links at the bottom of this page.)
 
 Next, we "'fetch' the contents of that page". In this case, we'll just load the file off of disk:
 
 ```java
-private static String loadURL(URL url) throws IOException {
+private static String loadURL(URI url) throws IOException {
   String filePath = url.getPath();
 
   try (InputStream inputStream = new FileInputStream(filePath)) {
@@ -87,12 +95,12 @@ private static String loadURL(URL url) throws IOException {
 Lastly, we'll "render that page". And by that I mean we'll just dump the raw text on to the screen.
 
 ```java
+String text = loadURL(url);
+
 JTextPane textPane = new JTextPane();
 textPane.setText(text);
-// ...
+
 frame.add(textPane);
-frame.pack();
-// ...
 ```
 
 And now we have a really, really basic pipeline, but this could already be considered a usable application to some degree.
@@ -107,17 +115,17 @@ we can start building some meaningful stuff. We can improve upon it later.
 We can switch on the URL protocol. Nothing fancy, as we'll be replacing this later anyways.
 
 ```java
-private static String loadURL(URL url) throws IOException {
+private static String loadURL(URI url) throws IOException {
   try (InputStream inputStream = request(url)) {
     return new String(inputStream.readAllBytes(), StandardCharsets.UTF_8);
   }
 }
 
-private static InputStream request(URL url) throws IOException {
-  return switch (url.getProtocol()) {
+private static InputStream request(URI url) throws IOException {
+  return switch (url.getScheme()) {
     case "file" -> new FileInputStream(url.getPath());
-    case "http" -> url.openConnection().getInputStream();
-    case "https" -> url.openConnection().getInputStream();
+    case "http" -> url.toURL().openConnection().getInputStream();
+    case "https" -> url.toURL().openConnection().getInputStream();
     default -> throw new UnsupportedOperationException("Not Implemented!");
   };
 }
@@ -128,4 +136,10 @@ So if the URL has a file protocol, we'll use a FileInputStream, otherwise we'll 
 --
 
 Keep in mind that it is expected that you've opened the code diff for this guide and are primarily following the code diff.
-These steps are meant more as a "diff annotation" then to actually tell you each line of code to write and where to place those snippets of code. Future steps will be much more involved and have much more code, so it is often not practical to include all of the code here. In fact, sometimes it will be assumed that you've learned enough from previous steps that you can implement chunks of code yourself.
+These steps are meant more as a "diff annotation" then to actually tell you each line of code to write and where to place those snippets of code.
+Future steps will be much more involved and have much more code, so it is often not practical to include all of the code here.
+In fact, sometimes it will be assumed that you've learned enough from previous steps that you can implement chunks of code yourself.
+
+--
+
+In the next step, we'll explore the DOM and see how we can make a simplified representation of it.
