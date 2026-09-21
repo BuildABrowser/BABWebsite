@@ -20,9 +20,9 @@ import Layout from '../layouts/Layout.astro';
 	<section class="semicentered section">
 		<h2>Download a build:</h2>
 		<div id="downloads">
-			<a href="download_linux" tabindex="-1"><button class="nav-button ac-2">Linux (Tested on Arch, btw)</button></a>
-			<a href="download_windows" tabindex="-1"><button class="nav-button ac-1">Windows (Tested on Windows 11)</button></a>
-			<a href="download_android_desktop" tabindex="-1"><button class="nav-button ac-4">Android Desktop (Experimental)</button></a>
+			<a href="download_linux" role="button" class="nav-button ac-2">Linux (Tested on Arch, btw)</a>
+			<a href="download_windows" role="button" class="nav-button ac-1">Windows (Tested on Windows 11)</a>
+			<a href="download_android_desktop" role="button" class="nav-button ac-4">Android Desktop (Experimental)</a>
 		</div>
 		<div id="infoblurb">
 			<p>
@@ -36,7 +36,7 @@ import Layout from '../layouts/Layout.astro';
 	<section class="semicentered section">
 		<h2>Take a look at some steps:</h2>
 		<StepList max={6}/>
-		<a href="/steps" tabindex="-1"><button class="nav-button ac-1 all-steps">All Steps</button></a>
+		<a href="/steps" class="nav-button ac-1 all-steps" role="button">All Steps</a>
 	</section>
 	<section id="demo" class="section">
 		<h2>See a demo!</h2>

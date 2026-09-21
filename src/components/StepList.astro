@@ -12,7 +12,7 @@ const colors = [
 	{ steps
 		.filter((_, i) => !max || i < max)
 		.map((step, i) => <li class={colors[i % 4]}>
-			<a href={`/steps/${step.id}`} class="step-link"><div class="step-tile">
+			<a href={`/steps/${step.id}`} class="step-link" role="button"><div class="step-tile">
 				<div>
 					<h3 class="step-header">{step.data.title}</h3>
 					{ step.data.status && <span class="step-status">({step.data.status})</span> }
