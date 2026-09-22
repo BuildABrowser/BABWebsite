@@ -4,10 +4,11 @@ import Layout from '../layouts/Layout.astro';
 
 <!-- TODO: HTTP-equiv for download -->
 <Layout title={"Thank You for Downloading! (Windows)"}>
+	<meta http-equiv="refresh" content="0;https://github.com/BuildABrowser/BuildABrowser/releases/download/0.1.0/Browser-0.1.0-Windows.jar" slot="head"></meta>
 	<div class="semicentered section">
 		<h2>Thank You for Downloading!</h2>
 		<p>
-			Your download should begin shortly. If it does not, click <a href="#">here</a>.
+			Your download should begin shortly. If it does not, click <a href="https://github.com/BuildABrowser/BuildABrowser/releases/download/0.1.0/Browser-0.1.0-Windows.jar">here</a>.
 		</p>
 	</div>
 	<div id="command" class="semicentered section">
@@ -15,24 +16,12 @@ import Layout from '../layouts/Layout.astro';
 			You need a Java 24+ JRE (or JDK) to run BuildABrowser. <a href="https://www.azul.com/downloads/?package=jdk#zulu">Download Azul Zulu OpenJDK</a>.
 			Ensure your <span class="small-code">PATH</span> and <span class="small-code">JAVA_HOME</span> environment variables are set.
 		</p>
-		<h4>Java 24:</h4>
 		<code>
-			java -Xms32m
-				-XX:MaxHeapFreeRatio=10 -XX:MinHeapFreeRatio=10
-				-XX:G1PeriodicGCInterval=1000 -XX:+G1PeriodicGCInvokesConcurrent
-				-XX:+UnlockExperimentalVMOptions -XX:+UseCompactObjectHeaders
-				-Djava.net.preferIPv4Stack=true -jar buildabrowser.jar
-		</code>
-		<h4>Java 25 (LTS):</h4>
-		<code>
-			java -Xms32m
-				-XX:MaxHeapFreeRatio=10 -XX:MinHeapFreeRatio=10
-				-XX:G1PeriodicGCInterval=1000 -XX:+G1PeriodicGCInvokesConcurrent
-				-Djava.net.preferIPv4Stack=true -jar buildabrowser.jar
+			java -jar Browser-0.1.0-windows.jar
 		</code>
 		<p>
-			By default, BuildABrowser uses Skija (GPU-accelerated) for drawing. You can use Java2D by adding the <span class="small-code">--use-java2d</span> flag,
-			or use Skija in software-rendering mode via the <span class="small-code">--use-software-rendering</span> flag.
+			By default, BuildABrowser uses Skija (GPU-accelerated) for drawing. You can use Java2D by adding the <span class="small-code">-gbe java2d</span> flag,
+			or use Skija in software-rendering mode via the <span class="small-code">-gbe skija-nogpu</span> flag.
 		</p>
 	</div>
 	<div class="semicentered section">

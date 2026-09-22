@@ -2,12 +2,12 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<!-- TODO: HTTP-equiv for download -->
-<Layout title={"Thank You for Downloading! (Android Desktop)"}>
+<Layout title="Thank You for Downloading! (Android Desktop)">
+	<meta http-equiv="refresh" content="0;https://github.com/BuildABrowser/BuildABrowser-Android/releases/download/0.1.0/app-release.apk" slot="head"></meta>
 	<div class="semicentered section">
 		<h2>Thank You for Downloading!</h2>
 		<p>
-			Your download should begin shortly. If it does not, click <a href="#">here</a>.
+			Your download should begin shortly. If it does not, click <a href="https://github.com/BuildABrowser/BuildABrowser-Android/releases/download/0.1.0/app-release.apk">here</a>.
 		</p>
 	</div>
 	<div id="command" class="semicentered section">

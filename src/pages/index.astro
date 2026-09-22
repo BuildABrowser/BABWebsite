@@ -1,56 +1,216 @@
 ---
 import { Image } from 'astro:assets';
-import DemoScreenshot from '../assets/demo_screenshot.png';
 import StepList from '../components/StepList.astro';
+import DemoImageCard from '../components/DemoImageCard.astro';
 import Layout from '../layouts/Layout.astro';
+
+
+import SmallAcid2DemoScreenshot from '../assets/acid2_small.png';
+import SmallGitHubDemoScreenshot from '../assets/github_small.png';
+import DemoAcid1Website from '../assets/demo_acid1_website.png';
+import DemoAcid2Website from '../assets/demo_acid2_website.png';
+import DemoAcid3Website from '../assets/demo_acid3_website.png';
+import DemoBABWebsite from '../assets/demo_bab_website.png';
+import DemoBrowserlingWebsite from '../assets/demo_browserling_website.png';
+import DemoDebugger from '../assets/demo_debugger.png';
+import DemoDeviantArtGallery from '../assets/demo_deviantart_gallery.png';
+import DemoGitHubDiff from '../assets/demo_github_diff.png';
+import DemoGitHubHomepage from '../assets/demo_github_homepage.png';
+import DemoHackerNewsThread from '../assets/demo_hackernews_thread.png';
+import DemoHaikuWebsite from '../assets/demo_haiku_website.png';
+import DemoHTMLSpec from '../assets/demo_html_spec.png';
+import DemoOhDanishBakeryWebsite from '../assets/demo_ohdanishbakery_website.png';
+import DemoOldRedditWebsite from '../assets/demo_old_reddit_website.png';
+import DemoPythonWebsite from '../assets/demo_python_website.png';
+import DemoVKSpecWebsite from '../assets/demo_vkspec_website.png';
+import DemoWhatIsMyBrowserWebsite from '../assets/demo_whatismybrowser_website.png';
+import DemoWikipediaWebsite from '../assets/demo_wikipedia_website.png';
 ---
 
 <Layout title={"Build a browser!"}>
 	<div class="intro-card">
-		<h1>BuildABrowser</h1>
-		<p>
-			BuildABrowser is a project aiming to build a browser and its rendering engine in Java, and then document it
-			such that others can rebuild it for themselves.
-		</p>
-		<span id="demo-links">
-			<a href="#demo">Jump to Screenshots</a> |
-			<a href="https://youtube.com/" target="_blank">View on <span style="color: #ff0033;">YouTube</span></a>
-		</span>
+		<div>
+			<h1>BuildABrowser</h1>
+			<p>
+				BuildABrowser is a project aiming to build a browser and its rendering engine in Java, and then (eventually) document it
+				such that others can rebuild it for themselves.
+			</p>
+			<span id="demo-links">
+				<a href="#demo">Jump to Screenshots</a> |
+				<a href="https://youtube.com/" target="_blank">View on <span style="color: #ff0033;">YouTube</span></a>
+			</span>
+		</div>
+		<figure>
+			<a href={SmallAcid2DemoScreenshot.src}>
+				<Image
+					src={SmallAcid2DemoScreenshot}
+					alt="A screenshot showing BuildABrowser pass Acid2"
+					height="256"
+					id="small-demo-screenshot"
+				/>
+			</a>
+			<figcaption>Acid2, as rendered in BuildABrowser Browser (click to enlarge).</figcaption>
+		</figure>
+		<figure>
+			<a href={SmallGitHubDemoScreenshot.src}>
+				<Image
+					src={SmallGitHubDemoScreenshot}
+					alt="A screenshot showing BuildABrowser render GitHub (Logged In)"
+					height="256"
+					id="small-demo-screenshot"
+				/>
+			</a>
+			<figcaption>GitHub, as rendered in BuildABrowser Browser (click to enlarge).</figcaption>
+		</figure>
 	</div>
 	<section class="semicentered section">
-		<h2>Download a build:</h2>
+		<h2>Download Release v0.1.0:</h2>
 		<div id="downloads">
 			<a href="download_linux" role="button" class="nav-button ac-2">Linux (Tested on Arch, btw)</a>
 			<a href="download_windows" role="button" class="nav-button ac-1">Windows (Tested on Windows 11)</a>
 			<a href="download_android_desktop" role="button" class="nav-button ac-4">Android Desktop (Experimental)</a>
 		</div>
-		<div id="infoblurb">
+		<div class="infoblurb">
 			<p>
-				The Linux/Window builds require a JVM (Java 24 or higher) - I will publish an experimental
-				Graal build later, but Graal didn't work very well in my testing.
-				For systems not listed, it may be possible (untested) to download the Linux build and pass the
-				<span class="small-code">--use-java2d</span> flag.
+				The Linux/Window builds require a JVM (Java 24 or higher).
+			</p><p>
+				The browser uses the Skija painter by default. To use Java2D, pass the <span class="small-code">-gbe java2d</span> flag.
 			</p>
 		</div>
 	</section>
 	<section class="semicentered section">
+		<h2>Embedding Guides:</h2>
+		<div class="infoblurb">
+			<p>You can embed the BuildABrowser renderer in your Swing application or non-mobile Android Jetpack Compose application!</p>
+		</div>
+		<ul>
+			<li><a href="https://github.com/BuildABrowser/example-embedding-swing">Embedding Guide for Swing</a></li>
+			<li><a href="https://github.com/BuildABrowser/example-embedding-android">Embedding Guide for Jetpack Compose on Android Desktop</a></li>
+		</ul>
+	</section>
+	<section class="semicentered section steps-section">
 		<h2>Take a look at some steps:</h2>
-		<StepList max={6}/>
-		<a href="/steps" class="nav-button ac-1 all-steps" role="button">All Steps</a>
+		<div class="steps-stub-banner">
+			<h3>This section is a stub!</h3>
+			<p>This section is a stub. It is not part of the v0.1.0 release.</p>
+		</div>
+		<StepList max={3}/>
+		<a href="/steps" class="nav-button ac-4 all-steps" role="button">All Steps</a>
 	</section>
 	<section id="demo" class="section">
 		<h2>See a demo!</h2>
-		<a href={DemoScreenshot.src}>
-			<Image
-				src={DemoScreenshot}
-				alt="A screenshot containing two BuildABrowser windows"
-				width="1920"
-				id="demo-screenshot"
+		<p>Each of the screenshots below was rendered by BuildABrowser Browser.</p>
+		<div id="screenshot-grid">
+			<DemoImageCard
+				title="Acid1 Test"
+				src={DemoAcid1Website}
+				alt="A screenshot of the browser rendering the Acid1 test page."
+				description="The radio box hitbox has a bug, making it hard to click."
 			/>
-		</a>
+			<DemoImageCard
+				title="Acid2 Test"
+				src={DemoAcid2Website}
+				alt="A screenshot of the browser rendering the Acid2 test page."
+			/>
+			<DemoImageCard
+				title="Acid3 Test"
+				src={DemoAcid3Website}
+				alt="A screenshot of the browser rendering the Acid3 test page."
+				description="JS is not supported at this time."
+			/>
+			<DemoImageCard
+				title="BuildABrowser Homepage"
+				src={DemoBABWebsite}
+				alt="A screenshot of the browser rendering its homepage."
+			/>
+			<DemoImageCard
+				title="Browserling"
+				src={DemoBrowserlingWebsite}
+				alt="A screenshot of the browser rendering the Browserling homepage."
+				description="Not that it's useful in any meaningful way without JS, but I thought it looked cool."
+			/>
+			<DemoImageCard
+				title="DeviantArt Gallery"
+				src={DemoDeviantArtGallery}
+				alt="A screenshot of the browser rendering DeviantArt's gallery."
+				description={
+					"There are only two columns because DA uses JS to reflow the layout"
+					+ " which the browser does not support. In theory, you can also copy"
+					+ " the 'td' cookie from another browser, which overrides layout."
+				}
+			/>
+			<DemoImageCard
+				title="GitHub PR Diff"
+				src={DemoGitHubDiff}
+				alt="A screenshot of the browser rendering a GitHub diff view."
+				description="GitHub has recently been making me login... which is not ideal considering the browser is not hardened for security..."
+			/>
+			<DemoImageCard
+				title="GitHub Homepage"
+				src={DemoGitHubHomepage}
+				alt="A screenshot of the browser rendering the GitHub homepage."
+			/>
+			<DemoImageCard
+				title="Hacker News Thread"
+				src={DemoHackerNewsThread}
+				alt="A screenshot of the browser rendering a Hacker News discussion thread."
+			/>
+			<DemoImageCard
+				title="HaikuOS"
+				src={DemoHaikuWebsite}
+				alt="A screenshot of the browser rendering the Haiku OS homepage."
+			/>
+			<DemoImageCard
+				title="HTML Specification"
+				src={DemoHTMLSpec}
+				alt="A screenshot of the browser rendering the single-page HTML specification."
+			/>
+			<DemoImageCard
+				title="O&H Danish Bakery"
+				src={DemoOhDanishBakeryWebsite}
+				alt="A screenshot of the browser rendering the O&H Danish Bakery storefront."
+			/>
+			<DemoImageCard
+				title="Old Reddit"
+				src={DemoOldRedditWebsite}
+				alt="A screenshot of the browser rendering an Old Reddit thread."
+				description={
+					"Unfortunately, Old Reddit now requires login, and the login page is completely blank "
+					+ "on the browser. This is a screenshot of what it looks like if you do manage to get logged in."
+					+ " (Especially annoying since the browser is not hardened for security...)"
+				}
+			/>
+			<DemoImageCard
+				title="Python Homepage"
+				src={DemoPythonWebsite}
+				alt="A screenshot of the browser rendering the Python homepage."
+			/>
+			<DemoImageCard
+				title="SerenityOS + Debugger"
+				src={DemoDebugger}
+				alt="A screenshot of the browser rendering Serenity's homepage."
+				description="This demo shows off the browser's debugger utility."
+			/>
+			<DemoImageCard
+				title="Vulkan Specification (vkspec)"
+				src={DemoVKSpecWebsite}
+				alt="A screenshot of the browser rendering the Vulkan API specification (vkspec)."
+			/>
+			<DemoImageCard
+				title="WhatIsMyBrowser"
+				src={DemoWhatIsMyBrowserWebsite}
+				alt="A screenshot of the browser rendering the WhatIsMyBrowser webpage."
+				description="The red box is not part of the website."
+			/>
+			<DemoImageCard
+				title="Wikipedia"
+				src={DemoWikipediaWebsite}
+				alt="A screenshot of the browser rendering the Wikipedia homepage."
+			/>
+		</div>
 	</section>
 	<footer>
-		Created by Jason Gronn (@EveryOS) | <a href="mailto:jgronn@buildabrowser.net">mailto:jgronn@buildabrowser.net</a><br/>
+		Created by Jason Gronn (@EveryOS) | Email: <a href="mailto:jgronn@buildabrowser.net">jgronn@buildabrowser.net</a><br/>
 		Socials
 		| <a href="https://github.com/JasonTheKitten/" target="_blank">GitHub</a>
 		| <a href="https://www.linkedin.com/in/jason-gronn/" target="_blank">LinkedIn</a>
@@ -64,11 +224,18 @@ import Layout from '../layouts/Layout.astro';
 <style>
 	.intro-card {
 		text-align: center;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		gap: 2em;
 		margin: 4em;
+	}
+	.intro-card > :first-child {
+		margin: 0 2em;
 	}
 	.intro-card p {
 		margin: auto;
-		max-width: 40em;
+		max-width: 45em;
 	}
 	.intro-card h1 {
 		font-size: xxx-large;
@@ -86,7 +253,7 @@ import Layout from '../layouts/Layout.astro';
 	#downloads {
 		display: flex;
 		flex-wrap: wrap;
-		column-gap: 2em;
+		column-gap: 1em;
 	}
 	#downloads > * {
 		flex-grow: 1;
@@ -102,7 +269,7 @@ import Layout from '../layouts/Layout.astro';
 		width: 100%;
 	}
 
-	#infoblurb p {
+	.infoblurb p {
 		max-width: 55em;
 	}
 
@@ -115,6 +282,36 @@ import Layout from '../layouts/Layout.astro';
 		width: clamp(50%, 80em, 100%);
 		height: auto;
 		margin: auto;
+	}
+
+	#screenshot-grid {
+		--gap: 5em;
+		--max-cols: 3;
+		--min-col-width: 512px;
+
+		margin: auto;
+		padding: 0 10em;
+
+		display: grid;
+		/* TODO: var acts weird in calc, need to do debugging */
+		/* TODO: Also need to fix gap + auto-fill */
+		grid-template-columns: repeat(
+			auto-fill,
+			minmax(
+				max(
+					min(100%, var(--min-col-width)),
+					calc(100% / var(--max-cols) - var(--gap))
+				),
+				1fr
+			)
+		);
+		column-gap: var(--gap);
+		row-gap: 1em;
+	}
+
+	#screenshot-grid :global(img) {
+		max-width: 100%;
+		height: auto !important;
 	}
 
 	footer {
@@ -130,7 +327,44 @@ import Layout from '../layouts/Layout.astro';
 		color: var(--color-foreground-primary);
 	}
 
+	figure {
+		margin: 0;
+		width: min-content;
+	}
+
+	figcaption {
+		color: gray;
+		font-size: .9em;
+	}
+
+	.steps-section :global(*:not(.steps-stub-banner):not(.steps-stub-banner *)) {
+		/* BuildABrowser does not support this, so it will not be rendered there */
+		text-decoration: line-through !important;
+	}
+
+	.steps-stub-banner {
+		color: gray;
+		border: 1px solid gray;
+		margin: 2em 0;
+		padding: 0 1em;
+		font-size: .85em;
+	}
+	
+	footer {
+		background-color: #0008;
+	}
+
+	@media (prefers-color-scheme: light) {
+		footer {
+			background-color: #FFF4;
+		}
+	}
+
 	@media screen and (max-width: 800px) {
+		.intro-card > :first-child {
+			margin: 0;
+		}
+
 		.intro-card h1 {
 			font-size: xx-large;
 		}
@@ -148,17 +382,10 @@ import Layout from '../layouts/Layout.astro';
 			width: 100%;
 			margin-top: 0;
 		}
-	}
 
-	@media screen and (max-width: 2700px) {
-		footer {
-			background-color: #0008;
-		}
-
-		@media (prefers-color-scheme: light) {
-			footer {
-				background-color: #FFF4;
-			}
+		#screenshot-grid {
+			padding: 0 2em;
+			gap: 0;
 		}
 	}
 </style>

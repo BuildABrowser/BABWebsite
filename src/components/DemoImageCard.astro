@@ -1,0 +1,22 @@
+---
+import { Image } from 'astro:assets';
+
+const { title, src, alt, description } = Astro.props;
+---
+
+<div>
+	<div>
+		<!-- Hacky way to keep h3 centered... -->
+		<span style="font-size: .8em; color: #00000000; margin: 0 0.5em; visibility: hidden;" aria-hidden="true">(click to enlarge)</span>
+		<h3 style="display: inline-block;">{title}</h3>
+		<span style="font-size: .8em; color: gray; margin: 0 0.5em;">(click to enlarge)</span>
+	</div>
+	<a href={src.src}>
+		<Image
+			src={src}
+			alt={alt}
+			height="512"
+		/>
+	</a>
+	<p>{description}</p>
+</div>
