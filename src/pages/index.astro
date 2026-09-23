@@ -62,9 +62,20 @@ import DemoWikipediaWebsite from '../assets/demo_wikipedia_website.png';
 			</a>
 			<figcaption>GitHub, as rendered in BuildABrowser Browser (click to enlarge).</figcaption>
 		</figure>
+		<figure id="demo-video">
+			<iframe
+				height="256"
+				src="https://www.youtube.com/embed/xWF7YPIoks8"
+				title="BuildABrowser (Custom Renderer) Demo Video"
+				allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+				referrerpolicy="strict-origin-when-cross-origin"
+				allowfullscreen
+			></iframe>
+			<figcaption>A demo video demonstrating the browser running live.</figcaption>
+		</figure>
 	</div>
 	<section class="semicentered section">
-		<h2>Download Release v0.1.0:</h2>
+		<h2>Download Release v0.1.1:</h2>
 		<div id="downloads">
 			<a href="download_linux" role="button" class="nav-button ac-2">Linux (Tested on Arch, btw)</a>
 			<a href="download_windows" role="button" class="nav-button ac-1">Windows (Tested on Windows 11)</a>
@@ -92,7 +103,7 @@ import DemoWikipediaWebsite from '../assets/demo_wikipedia_website.png';
 		<h2>Take a look at some steps:</h2>
 		<div class="steps-stub-banner">
 			<h3>This section is a stub!</h3>
-			<p>This section is a stub. It is not part of the v0.1.0 release.</p>
+			<p>This section is a stub. It is not part of the v0.1.1 release.</p>
 		</div>
 		<StepList max={3}/>
 		<a href="/steps" class="nav-button ac-4 all-steps" role="button">All Steps</a>
@@ -389,3 +400,11 @@ import DemoWikipediaWebsite from '../assets/demo_wikipedia_website.png';
 		}
 	}
 </style>
+
+<noscript>
+	<style>
+		#demo-video {
+			display: none;
+		}
+	</style>
+</noscript>
